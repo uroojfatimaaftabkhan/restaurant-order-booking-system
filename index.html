@@ -1,0 +1,2560 @@
+ 
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet Restaurant | Portfolio Project</title>
+    
+    <!-- AOS Animation CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+/* ===== GLOBAL STYLES ===== */
+:root {
+    --primary: #d97706;
+    --primary-dark: #b45309;
+    --secondary: #78350f;
+    --dark: #1f2937;
+    --light: #f9fafb;
+    --gray: #6b7280;
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+    --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    overflow-x: hidden;
+    padding-top: 76px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+/* ===== HEADER ===== */
+#header {
+    transition: var(--transition);
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary) !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--dark);
+    margin: 0 10px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.cart-badge {
+    font-size: 0.7rem;
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+    background: var(--primary);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(217,119,6,0.3);
+}
+
+.btn-outline-light {
+    border: 2px solid #fff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-outline-light:hover {
+    background: #fff;
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.btn-sm {
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    border-radius: 25px;
+}
+
+/* ===== SECTIONS ===== */
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--dark);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary);
+}
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+}
+
+.hero-left {
+    color: white;
+}
+
+.hero-left h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-left p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.hero-features {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.hero-features span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-features i {
+    color: var(--primary);
+}
+
+.hero-right {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* Hero Image - Desktop Large */
+.dish-circle {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid rgba(255,255,255,0.15);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.45);
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.1, 0.7, 0.3, 1);
+    will-change: transform;
+}
+
+.dish-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Entrance Animation */
+.dish-circle.entrance-spin {
+    animation: smoothEntrance 1.8s ease-out forwards;
+}
+
+@keyframes smoothEntrance {
+    0% { transform: rotate(0deg) scale(0.8); opacity: 0; }
+    30% { transform: rotate(120deg) scale(1.05); opacity: 0.9; }
+    70% { transform: rotate(300deg) scale(1.02); }
+    100% { transform: rotate(360deg) scale(1); opacity: 1; }
+}
+
+/* Motion Circles */
+.motion-circles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.motion-circles .circle {
+    position: absolute;
+    border: 2px dashed rgba(255,215,0,0.3);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 15s linear infinite;
+}
+
+.motion-circles .c1 { width: 120%; height: 120%; animation-duration: 15s; }
+.motion-circles .c2 { width: 90%; height: 90%; animation-duration: 12s; }
+.motion-circles .c3 { width: 60%; height: 60%; animation-duration: 9s; }
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Glow Effect */
+.hero-right::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,158,11,0.3), transparent 70%);
+    filter: blur(70px);
+    z-index: -1;
+}
+
+/* ===== ABOUT SECTION ===== */
+#about {
+    background: linear-gradient(135deg, #f9fafb, #fff1e0);
+}
+
+.about-img-wrapper {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.about-img-wrapper:hover {
+    transform: scale(1.02) rotate(1deg);
+    box-shadow: var(--shadow-hover);
+}
+
+.about-img-wrapper img {
+    width: 100%;
+    height: auto;
+}
+
+.floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px dashed var(--primary);
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-circle.c1 { width: 80px; height: 80px; top: 10%; left: 5%; }
+.floating-circle.c2 { width: 50px; height: 50px; bottom: 15%; right: 10%; animation-delay: 2s; }
+.floating-circle.c3 { width: 60px; height: 60px; top: 40%; right: 20%; animation-delay: 4s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.about-title {
+    background: linear-gradient(90deg, var(--primary), #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.8rem;
+}
+
+/* ===== MENU SECTION ===== */
+#menu {
+    background: var(--light);
+}
+
+#menu .tab-content {
+    padding-top: 50px;
+}
+
+#menu .tab-pane > .row {
+    --bs-gutter-y: 5rem;
+}
+
+.menu-card {
+    position: relative;
+    background: white;
+    border-radius: 25px;
+    padding-top: 100px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.menu-img-wrapper {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: var(--transition);
+}
+
+.menu-card:hover .menu-img-wrapper {
+    transform: translateX(-50%) scale(1.1) rotate(5deg);
+}
+
+.menu-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menu-card .card-body {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.menu-card .card-body > .d-flex { margin-top: auto; }
+
+.menu-card .card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 10px 0 5px;
+}
+
+.menu-card .card-text {
+    color: var(--gray);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.menu-card .d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-card .gap-2 {
+    display: flex;
+    gap: 8px;
+}
+
+/* ===== SPECIALS SECTION ===== */
+.specials-section {
+    background: linear-gradient(135deg, #fff7ed, #ffffff);
+}
+
+.special-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.special-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.special-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.special-card:hover img {
+    transform: scale(1.1);
+}
+
+.special-content {
+    padding: 20px;
+    flex: 1;
+}
+
+.special-content h5 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.special-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* ===== RESERVATION SECTION ===== */
+.reservation-section {
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+}
+
+.reservation-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow);
+}
+
+.form-control, .form-select {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(217,119,6,0.25);
+}
+
+.reserve-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.reserve-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(217,119,6,0.3);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #111827;
+    color: #9ca3af;
+    padding: 50px 0 20px;
+}
+
+footer h5 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--primary);
+}
+
+footer a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+footer a:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+}
+
+.social-links a:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.contact-info li {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-info i {
+    color: var(--primary);
+    min-width: 25px;
+}
+
+.payment-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ===== TOAST NOTIFICATION ===== */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    z-index: 9999;
+    border-left: 4px solid var(--primary);
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.toast-icon {
+    color: var(--primary);
+    font-size: 24px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Desktop Large (1400px and up) */
+@media (min-width: 1400px) {
+    .dish-circle { width: 550px; height: 550px; }
+    .hero-right::before { width: 550px; height: 550px; }
+}
+
+/* Desktop (1200px to 1399px) */
+@media (max-width: 1399px) and (min-width: 1200px) {
+    .dish-circle { width: 500px; height: 500px; }
+    .hero-right::before { width: 500px; height: 500px; }
+}
+
+/* Small Desktop (1199px to 992px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .dish-circle { width: 400px; height: 400px; }
+    .hero-right::before { width: 400px; height: 400px; }
+    .hero-left h1 { font-size: 3rem; }
+    .menu-img-wrapper { width: 130px; height: 130px; top: -45px; }
+    .menu-card { padding-top: 90px; }
+}
+
+/* Tablet (991px to 768px) */
+@media (max-width: 991px) {
+    body { padding-top: 70px; }
+    
+    .navbar-collapse {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 10px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-nav {
+        align-items: center;
+    }
+    
+    .navbar-nav .nav-item {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .navbar-nav .btn-primary {
+        margin: 10px 0;
+        width: 100%;
+    }
+    
+    .hero-section {
+        text-align: center;
+        padding: 60px 0;
+    }
+    
+    .hero-left {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    
+    .hero-left h1 { font-size: 2.5rem; }
+    
+    .hero-features, .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero-buttons .btn {
+        padding: 10px 25px;
+    }
+    
+    .dish-circle { width: 300px; height: 300px; }
+    .hero-right::before { width: 300px; height: 300px; }
+    
+    .about-img-wrapper { margin-bottom: 30px; }
+    
+    /* Menu Cards - Fixed */
+    .menu-card {
+        padding-top: 80px;
+    }
+    
+    .menu-img-wrapper {
+        width: 120px;
+        height: 120px;
+        top: -40px;
+    }
+    
+    .menu-card .d-flex {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .menu-card .gap-2 {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .special-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    footer .col-lg-4,
+    footer .col-lg-2,
+    footer .col-lg-3 {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    footer h5::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .contact-info li { justify-content: center; }
+    .social-links, .payment-icons { justify-content: center; }
+}
+
+/* Mobile Large (767px to 576px) */
+@media (max-width: 767px) {
+    section { padding: 50px 0; }
+    
+    .section-title h2 { font-size: 2rem; }
+    
+    .hero-left h1 { font-size: 2rem; }
+    .hero-left p { font-size: 1rem; }
+    
+    .hero-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+    }
+    
+    .dish-circle { width: 250px; height: 250px; }
+    .hero-right::before { width: 250px; height: 250px; }
+    
+    .motion-circles .c1 { width: 130%; height: 130%; }
+    .motion-circles .c2 { width: 100%; height: 100%; }
+    .motion-circles .c3 { width: 70%; height: 70%; }
+    
+    .about-title { font-size: 2rem; }
+    
+    /* Menu Cards */
+    .nav-pills .nav-link {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .menu-card {
+        padding-top: 70px;
+    }
+    
+    .menu-img-wrapper {
+        width: 100px;
+        height: 100px;
+        top: -35px;
+    }
+    
+    .menu-card .card-title { font-size: 1.1rem; }
+    .price { font-size: 1.3rem; }
+    
+    .special-card img { height: 200px; }
+    .special-content h5 { font-size: 1.1rem; }
+    .special-price { font-size: 1.3rem; }
+    
+    .reservation-card { padding: 25px; }
+    .reserve-btn { width: 100%; }
+}
+
+/* Mobile Small (575px and down) */
+@media (max-width: 575px) {
+    .container { padding-left: 15px; padding-right: 15px; }
+    
+    .hero-left h1 { font-size: 1.8rem; }
+    
+    .dish-circle { width: 200px; height: 200px; }
+    .hero-right::before { width: 200px; height: 200px; }
+    
+    .motion-circles .c1 { width: 140%; height: 140%; }
+    .motion-circles .c2 { width: 110%; height: 110%; }
+    .motion-circles .c3 { width: 80%; height: 80%; }
+    
+    .section-title h2 { font-size: 1.8rem; }
+    
+    .about-title { font-size: 1.8rem; }
+    .about-lead { font-size: 1rem; }
+    
+    .stats-box { padding: 10px; }
+    .stats-box i { font-size: 1.3rem; }
+    .stats-box h5 { font-size: 0.9rem; }
+    
+    .nav-pills .nav-link {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+    }
+    
+    .menu-card {
+        padding-top: 60px;
+    }
+    
+    .menu-img-wrapper {
+        width: 90px;
+        height: 90px;
+        top: -30px;
+        border-width: 4px;
+    }
+    
+    .menu-card .card-title { font-size: 1rem; }
+    .menu-card .card-text { font-size: 0.8rem; }
+    .price { font-size: 1.1rem; }
+    
+    .menu-card .btn {
+        padding: 4px 10px;
+        font-size: 0.8rem;
+    }
+    
+    .special-card img { height: 180px; }
+    .special-content { padding: 15px; }
+    
+    .reservation-card { padding: 20px; }
+    
+    .toast-notification {
+        left: 15px;
+        right: 15px;
+        transform: translateY(400px);
+    }
+    
+    .toast-notification.show { transform: translateY(0); }
+}
+
+/* Very Small Devices */
+@media (max-width: 360px) {
+    .dish-circle { width: 160px; height: 160px; }
+    .hero-right::before { width: 160px; height: 160px; }
+    .hero-left h1 { font-size: 1.5rem; }
+}
+
+/* Landscape Mode */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero-section { min-height: auto; padding: 40px 0; }
+    .dish-circle { width: 150px; height: 150px; }
+    .hero-right::before { width: 150px; height: 150px; }
+}
+/* ===== FINAL HERO IMAGE FIX - ADD AT THE VERY END ===== */
+@media (min-width: 1400px) {
+    .dish-circle {
+        width: 550px !important;
+        height: 550px !important;
+    }
+    .hero-right::before {
+        width: 550px !important;
+        height: 550px !important;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .dish-circle {
+        width: 500px !important;
+        height: 500px !important;
+    }
+    .hero-right::before {
+        width: 500px !important;
+        height: 500px !important;
+    }
+}
+
+
+
+/* Yeh purani responsive CSS ko override karega */
+@media (max-width: 1199px) {
+    .dish-circle {
+        width: 300px !important;
+        height: 300px !important;
+    }
+    .hero-right::before {
+        width: 300px !important;
+        height: 300px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .dish-circle {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    .hero-right::before {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
+
+
+
+
+ </style>
+
+</head>
+
+
+<body>
+
+ <!-- ================= HEADER / NAVIGATION ================= -->
+<header id="header" class="fixed-top shadow-sm" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.8); transition: all 0.3s;">
+  <nav class="navbar navbar-expand-lg navbar-light container">
+    <!-- Brand -->
+    <a class="navbar-brand text-primary fw-bold fs-4 d-flex align-items-center" href="#home">
+      <i class="fas fa-utensils me-2"></i>Gourmet
+    </a>
+
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+ <!-- Nav Links -->
+<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav ms-auto align-items-center">
+    <li class="nav-item"><a class="navbar-brand fw-bold fs-4 d-flex align-items-center" href="#home"></a></li>
+    <li class="nav-item"><a class="nav-link px-3" href="#about">About</a></li>
+    <li class="nav-item"><a class="nav-link px-3" href="#menu">Menu</a></li>
+    <li class="nav-item"><a class="nav-link px-3" href="#specials">Specials</a></li>
+    <li class="nav-item"><a class="nav-link px-3" href="#reservation">Reservation</a></li>
+
+    <!-- Order Now Button -->
+    <li class="nav-item ms-lg-2">
+      <a href="#reservation" class="btn btn-primary btn-sm rounded-pill px-3 py-1">
+        <i class="fas fa-utensils me-1"></i>Order Now
+      </a>
+    </li>
+
+    <!-- Cart Icon -->
+    <li class="nav-item ms-lg-2">
+      <a href="cart.html" class="nav-link position-relative p-2">
+        <i class="fas fa-shopping-cart fa-lg"></i>
+        <span class="cart-badge position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCount">0</span>
+      </a>
+    </li>
+
+
+    
+  </ul>
+</div>
+  </nav>
+</header>
+
+
+
+
+
+<!-- HERO SECTION -->
+<section class="hero-section d-flex align-items-center" id="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            
+            <!-- LEFT SIDE: Content -->
+            <div class="col-lg-6 text-white hero-left">
+                <h1 class="hero-heading">
+                    Premium Taste <br>
+                    Delivered Fresh
+                </h1>
+                <p class="hero-subtext">
+                    Experience gourmet meals crafted with passion and delivered straight to your door.
+                </p>
+                <div class="hero-features">
+                    <span><i class="fas fa-motorcycle"></i> Fast Delivery</span>
+                    <span><i class="fas fa-seedling"></i> Fresh</span>
+                    <span><i class="fas fa-star"></i> Top Rated</span>
+                </div>
+                <div class="hero-buttons mt-4">
+                    <a href="#menu" class="btn btn-primary btn-lg">View Menu</a>
+                    <a href="#reservation" class="btn btn-outline-light btn-lg">Order Now</a>
+                </div>
+            </div>
+            
+            <!-- RIGHT SIDE: Circular Dish Image -->
+            <div class="col-lg-6 d-flex justify-content-center">
+                <div class="hero-right">
+                    <div class="dish-circle" id="rotatingDish">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Delicious Dish">
+                        
+                        <!-- Motion circles (decorative) -->
+                        <div class="motion-circles">
+                            <span class="circle c1"></span>
+                            <span class="circle c2"></span>
+                            <span class="circle c3"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+ <!-- ABOUT / OUR STORY SECTION -->
+<section id="about" class="py-5" style="background: linear-gradient(135deg, #f9fafb 0%, #fff1e0 100%);">
+  <div class="container">
+    <div class="row align-items-center">
+
+      
+     <!-- IMAGE SIDE -->
+<div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
+        <div class="about-img-wrapper position-relative">
+          <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Restaurant Interior" class="img-fluid rounded shadow-lg about-img">
+          <!-- Floating accent circles -->
+          <span class="floating-circle c1"></span>
+          <span class="floating-circle c2"></span>
+          <span class="floating-circle c3"></span>
+        </div>
+      </div>
+
+     <!-- TEXT SIDE -->
+<div class="col-lg-6" data-aos="fade-left" data-aos-delay="400">
+        <h2 class="display-5 fw-bold mb-3 about-title">Our Story</h2>
+        <p class="lead mb-3 about-lead">Founded in 2010, Gourmet Restaurant has been serving exceptional cuisine with passion and dedication.</p>
+        <p class="about-text mb-4">Our mission is to create unforgettable dining experiences through innovative recipes, premium ingredients, and impeccable service. Led by our award-winning chef, we bring you flavors that tell a story.</p>
+
+        <div class="row text-center mt-4">
+          <div class="col-4 " data-aos="zoom-in" data-aos-delay="600">
+            <i class="fas fa-star text-warning fa-2x mb-2"></i>
+            <h5 class="fw-semibold">15+ Years</h5>
+          </div>
+          <div class="col-4" data-aos="zoom-in" data-aos-delay="600">
+            <i class="fas fa-users text-warning fa-2x mb-2"></i>
+            <h5 class="fw-semibold">50K+ Guests</h5>
+          </div>
+          <div class="col-4" data-aos="zoom-in" data-aos-delay="600">
+            <i class="fas fa-award text-warning fa-2x mb-2"></i>
+            <h5 class="fw-semibold">10+ Awards</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+   <!-- ================= MENU SECTION ================== -->
+<section id="menu" class="py-5 bg-light">
+  <div class="container">
+   <h2 class="text-center mb-5" data-aos="fade-down">Our Menu</h2>
+
+    <!-- MENU TABS -->
+   <ul class="nav nav-pills justify-content-center mb-5" id="menuTabs" data-aos="fade-up" data-aos-delay="200">
+      <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#starters">Starters</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#mains">Main Course</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#desserts">Desserts</button>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+
+      <!-- STARTERS -->
+      <div class="tab-pane fade show active" id="starters">
+        <div class="row g-4">
+          <!-- ITEM 1 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card card position-relative">
+              <div class="menu-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80" alt="Truffle Arancini">
+              </div>
+              <div class="card-body text-center">
+                <h5 class="card-title">Truffle Arancini</h5>
+                <p class="text-muted">Crispy risotto balls with truffle oil</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="price">$12</span>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm add-to-cart"
+                      data-item="Truffle Arancini" data-price="12" data-image="https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80">
+                      <i class="fas fa-cart-plus"></i>
+                    </button>
+                    <button class="btn btn-primary btn-sm order-now"
+                      data-item="Truffle Arancini" data-price="12" data-image="https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80">
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 2 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card card position-relative">
+              <div class="menu-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Burrata Salad">
+              </div>
+              <div class="card-body text-center">
+                <h5 class="card-title">Burrata Salad</h5>
+                <p class="text-muted">Fresh burrata with tomatoes</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="price">$16</span>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm add-to-cart"
+                      data-item="Burrata Salad" data-price="16" data-image="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80">
+                      <i class="fas fa-cart-plus"></i>
+                    </button>
+                    <button class="btn btn-primary btn-sm order-now"
+                      data-item="Burrata Salad" data-price="16" data-image="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80">
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ITEM 3 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card card position-relative">
+              <div class="menu-img-wrapper">
+                <img src="data:image/jpeg;base64,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" alt="Garlic Shrimp">
+              </div>
+              <div class="card-body text-center">
+                <h5 class="card-title">Garlic Shrimp</h5>
+                <p class="text-muted">Sautéed shrimp with garlic butter sauce</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="price">$14</span>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm add-to-cart"
+                      data-item="Garlic Shrimp" data-price="14" data-image="https://images.unsplash.com/photo-1604908554025-8f6c27f84c0c?auto=format&fit=crop&w=600&q=80">
+                      <i class="fas fa-cart-plus"></i>
+                    </button>
+                    <button class="btn btn-primary btn-sm order-now"
+                      data-item="Garlic Shrimp" data-price="14" data-image="https://images.unsplash.com/photo-1604908554025-8f6c27f84c0c?auto=format&fit=crop&w=600&q=80">
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- ITEM 4 - Bruschetta -->
+<div class="col-md-6 col-lg-4">
+  <div class="menu-card card position-relative">
+    <div class="menu-img-wrapper">
+      <img src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=600&q=80" alt="Bruschetta">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">Bruschetta</h5>
+      <p class="text-muted">Toasted bread with tomatoes, basil & balsamic</p>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="price">$10</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm add-to-cart"
+            data-item="Bruschetta" data-price="10" data-image="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=600&q=80">
+            <i class="fas fa-cart-plus"></i>
+          </button>
+          <button class="btn btn-primary btn-sm order-now"
+            data-item="Bruschetta" data-price="10" data-image="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=600&q=80">
+            Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ITEM 5 - Calamari -->
+<div class="col-md-6 col-lg-4">
+  <div class="menu-card card position-relative">
+    <div class="menu-img-wrapper">
+      <img src="https://img.freepik.com/free-photo/crispy-fried-calamari-rings-served-with-side-tomato-sauce-garnished-with-fresh-parsley_9975-124480.jpg?semt=ais_rp_50_assets&w=740&q=80" alt="Calamari">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">Crispy Calamari</h5>
+      <p class="text-muted">Lightly fried squid with marinara sauce</p>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="price">$15</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm add-to-cart"
+            data-item="Crispy Calamari" data-price="15" data-image="https://images.unsplash.com/photo-1599483081-7c3fd8368e06?auto=format&fit=crop&w=600&q=80">
+            <i class="fas fa-cart-plus"></i>
+          </button>
+          <button class="btn btn-primary btn-sm order-now"
+            data-item="Crispy Calamari" data-price="15" data-image="https://images.unsplash.com/photo-1599483081-7c3fd8368e06?auto=format&fit=crop&w=600&q=80">
+            Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ITEM 6 - Stuffed Mushrooms -->
+<div class="col-md-6 col-lg-4">
+  <div class="menu-card card position-relative">
+    <div class="menu-img-wrapper">
+      <img src="https://hips.hearstapps.com/hmg-prod/images/stuffed-portobello-mushrooms-recipe-1-682f7b7958ce6.jpeg?resize=640:*" alt="Stuffed Mushrooms">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">Stuffed Mushrooms</h5>
+      <p class="text-muted">Mushrooms filled with garlic herb cheese</p>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="price">$13</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm add-to-cart"
+            data-item="Stuffed Mushrooms" data-price="13" data-image="https://images.unsplash.com/photo-1603039378111-9d5a8a0a200e?auto=format&fit=crop&w=600&q=80">
+            <i class="fas fa-cart-plus"></i>
+          </button>
+          <button class="btn btn-primary btn-sm order-now"
+            data-item="Stuffed Mushrooms" data-price="13" data-image="https://images.unsplash.com/photo-1603039378111-9d5a8a0a200e?auto=format&fit=crop&w=600&q=80">
+            Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+
+      <!-- MAIN COURSE -->
+      <div class="tab-pane fade" id="mains" >
+        <div class="row g-4">
+
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card card position-relative">
+              <div class="menu-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&q=80" alt="Steak">
+              </div>
+              <div class="card-body text-center">
+                <h5 class="card-title">Steak</h5>
+                <p class="text-muted">Grilled steak with herbs</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="price">$28</span>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm add-to-cart"
+                      data-item="Steak" data-price="28" data-image="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&q=80">
+                      <i class="fas fa-cart-plus"></i>
+                    </button>
+                    <button class="btn btn-primary btn-sm order-now"
+                      data-item="Steak" data-price="28" data-image="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&q=80">
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card card position-relative">
+              <div class="menu-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" alt="Gourmet Burger">
+              </div>
+              <div class="card-body text-center">
+                <h5 class="card-title">Gourmet Burger</h5>
+                <p class="text-muted">Beef burger with cheddar</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="price">$18</span>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm add-to-cart"
+                      data-item="Gourmet Burger" data-price="18" data-image="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80">
+                      <i class="fas fa-cart-plus"></i>
+                    </button>
+                    <button class="btn btn-primary btn-sm order-now"
+                      data-item="Gourmet Burger" data-price="18" data-image="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80">
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ITEM 3 - Grilled Salmon -->
+<div class="col-md-6 col-lg-4">
+  <div class="menu-card card position-relative">
+    <div class="menu-img-wrapper">
+      <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80" alt="Grilled Salmon">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">Grilled Salmon</h5>
+      <p class="text-muted">Atlantic salmon with lemon dill sauce</p>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="price">$26</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm add-to-cart"
+            data-item="Grilled Salmon" data-price="26" data-image="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80">
+            <i class="fas fa-cart-plus"></i>
+          </button>
+          <button class="btn btn-primary btn-sm order-now"
+            data-item="Grilled Salmon" data-price="26" data-image="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80">
+            Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ITEM 4 - Lobster Ravioli -->
+<div class="col-md-6 col-lg-4">
+  <div class="menu-card card position-relative">
+    <div class="menu-img-wrapper">
+      <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=600&q=80" alt="Lobster Ravioli">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">Lobster Ravioli</h5>
+      <p class="text-muted">House-made pasta with lobster cream sauce</p>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="price">$32</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm add-to-cart"
+            data-item="Lobster Ravioli" data-price="32" data-image="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=600&q=80">
+            <i class="fas fa-cart-plus"></i>
+          </button>
+          <button class="btn btn-primary btn-sm order-now"
+            data-item="Lobster Ravioli" data-price="32" data-image="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=600&q=80">
+            Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ITEM 5 - Lamb Chops -->
+<div class="col-md-6 col-lg-4">
+  <div class="menu-card card position-relative">
+    <div class="menu-img-wrapper">
+      <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=600&q=80" alt="Lamb Chops">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">Lamb Chops</h5>
+      <p class="text-muted">Herb-crusted lamb with mint sauce</p>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="price">$34</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm add-to-cart"
+            data-item="Lamb Chops" data-price="34" data-image="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=600&q=80">
+            <i class="fas fa-cart-plus"></i>
+          </button>
+          <button class="btn btn-primary btn-sm order-now"
+            data-item="Lamb Chops" data-price="34" data-image="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=600&q=80">
+            Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ITEM 6 - Mushroom Risotto -->
+<div class="col-md-6 col-lg-4">
+  <div class="menu-card card position-relative">
+    <div class="menu-img-wrapper">
+      <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=600&q=80" alt="Mushroom Risotto">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">Mushroom Risotto</h5>
+      <p class="text-muted">Creamy arborio rice with wild mushrooms</p>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="price">$22</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm add-to-cart"
+            data-item="Mushroom Risotto" data-price="22" data-image="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=600&q=80">
+            <i class="fas fa-cart-plus"></i>
+          </button>
+          <button class="btn btn-primary btn-sm order-now"
+            data-item="Mushroom Risotto" data-price="22" data-image="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=600&q=80">
+            Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+
+      <!-- DESSERTS -->
+      <div class="tab-pane fade" id="desserts">
+        <div class="row g-4">
+
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card card position-relative">
+              <div class="menu-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80" alt="Chocolate Cake">
+              </div>
+              <div class="card-body text-center">
+                <h5 class="card-title">Chocolate Cake</h5>
+                <p class="text-muted">Rich chocolate layered cake</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="price">$10</span>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm add-to-cart"
+                      data-item="Chocolate Cake" data-price="10" data-image="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80">
+                      <i class="fas fa-cart-plus"></i>
+                    </button>
+                    <button class="btn btn-primary btn-sm order-now"
+                      data-item="Chocolate Cake" data-price="10" data-image="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80">
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="menu-card card position-relative">
+              <div class="menu-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=80" alt="Ice Cream">
+              </div>
+              <div class="card-body text-center">
+                <h5 class="card-title">Ice Cream</h5>
+                <p class="text-muted">Vanilla ice cream scoop</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="price">$6</span>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm add-to-cart"
+                      data-item="Ice Cream" data-price="6" data-image="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=80">
+                      <i class="fas fa-cart-plus"></i>
+                    </button>
+                    <button class="btn btn-primary btn-sm order-now"
+                      data-item="Ice Cream" data-price="6" data-image="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=80">
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ITEM 3 - Tiramisu -->
+<div class="col-md-6 col-lg-4">
+  <div class="menu-card card position-relative">
+    <div class="menu-img-wrapper">
+      <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80" alt="Tiramisu">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">Tiramisu</h5>
+      <p class="text-muted">Classic Italian dessert with mascarpone</p>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="price">$9</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm add-to-cart"
+            data-item="Tiramisu" data-price="9" data-image="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80">
+            <i class="fas fa-cart-plus"></i>
+          </button>
+          <button class="btn btn-primary btn-sm order-now"
+            data-item="Tiramisu" data-price="9" data-image="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80">
+            Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ITEM 4 - Crème Brûlée -->
+<div class="col-md-6 col-lg-4">
+  <div class="menu-card card position-relative">
+    <div class="menu-img-wrapper">
+      <img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?auto=format&fit=crop&w=600&q=80" alt="Crème Brûlée">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">Crème Brûlée</h5>
+      <p class="text-muted">Vanilla bean custard with caramelized sugar</p>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="price">$8</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm add-to-cart"
+            data-item="Crème Brûlée" data-price="8" data-image="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?auto=format&fit=crop&w=600&q=80">
+            <i class="fas fa-cart-plus"></i>
+          </button>
+          <button class="btn btn-primary btn-sm order-now"
+            data-item="Crème Brûlée" data-price="8" data-image="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?auto=format&fit=crop&w=600&q=80">
+            Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ITEM 5 - Apple Pie -->
+<div class="col-md-6 col-lg-4">
+  <div class="menu-card card position-relative">
+    <div class="menu-img-wrapper">
+      <img src="https://i.ytimg.com/vi/4-bN7_fGwv4/maxresdefault.jpg" alt="Apple Pie">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">Apple Pie</h5>
+      <p class="text-muted">Warm apple pie with vanilla ice cream</p>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="price">$8</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm add-to-cart"
+            data-item="Apple Pie" data-price="8" data-image="https://images.unsplash.com/photo-1621743478913-9ef82d6a519a?auto=format&fit=crop&w=600&q=80">
+            <i class="fas fa-cart-plus"></i>
+          </button>
+          <button class="btn btn-primary btn-sm order-now"
+            data-item="Apple Pie" data-price="8" data-image="https://images.unsplash.com/photo-1621743478913-9ef82d6a519a?auto=format&fit=crop&w=600&q=80">
+            Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ITEM 6 - Panna Cotta -->
+<div class="col-md-6 col-lg-4">
+  <div class="menu-card card position-relative">
+    <div class="menu-img-wrapper">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJwMziXbSr_Z3AbdgHT8V6Y31HfejDAD1KWQ&s" alt="Panna Cotta">
+    </div>
+    <div class="card-body text-center">
+      <h5 class="card-title">Panna Cotta</h5>
+      <p class="text-muted">Italian cream dessert with berry compote</p>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <span class="price">$7</span>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm add-to-cart"
+            data-item="Panna Cotta" data-price="7" data-image="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=80">
+            <i class="fas fa-cart-plus"></i>
+          </button>
+          <button class="btn btn-primary btn-sm order-now"
+            data-item="Panna Cotta" data-price="7" data-image="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=80">
+            Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================= SPECIALS SECTION ================= -->
+<section id="specials" class="py-5 specials-section">
+<div class="container">
+
+<div class="section-title text-center mb-5">
+<h2>Chef's Specials</h2>
+<p>Signature dishes crafted with premium ingredients</p>
+</div>
+
+<div class="row g-4">
+
+<!-- ITEM 1 -->
+<div class="col-md-6 col-lg-4">
+<div class="special-card">
+
+<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=700&q=80">
+
+<div class="special-content">
+
+<h5>Grilled Salmon</h5>
+<p>Fresh salmon with lemon butter sauce</p>
+
+<div class="d-flex justify-content-between align-items-center">
+
+<span class="special-price">$28</span>
+
+<button class="btn btn-primary btn-sm order-now"
+data-item="Grilled Salmon"
+data-price="28">
+Order Now
+</button>
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- ITEM 2 -->
+<div class="col-md-6 col-lg-4">
+<div class="special-card">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJUumWZK7BJZfwJjWu3CPjYn1NjKTsHeex3A&s">
+
+<div class="special-content">
+
+<h5>Steak Supreme</h5>
+<p>Premium beef steak with garlic butter</p>
+
+<div class="d-flex justify-content-between align-items-center">
+
+<span class="special-price">$34</span>
+
+<button class="btn btn-primary btn-sm order-now"
+data-item="Steak Supreme"
+data-price="34">
+Order Now
+</button>
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- ITEM 3 -->
+<div class="col-md-6 col-lg-4">
+<div class="special-card">
+
+<img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=700&q=80">
+
+<div class="special-content">
+
+<h5>Gourmet Burger</h5>
+<p>Juicy beef burger with cheddar cheese</p>
+
+<div class="d-flex justify-content-between align-items-center">
+
+<span class="special-price">$18</span>
+
+<button class="btn btn-primary btn-sm order-now"
+data-item="Gourmet Burger"
+data-price="18">
+Order Now
+</button>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+
+<!-- RESERVATION SECTION -->
+<section id="reservation" class="reservation-section py-5">
+<div class="container">
+
+<div class="text-center mb-5">
+<h2 class="fw-bold">Reserve Your Table</h2>
+<p class="text-muted">Book your table for a memorable dining experience</p>
+</div>
+
+<div class="row justify-content-center">
+<div class="col-lg-7">
+
+<div class="reservation-card p-4">
+
+<form id="reservation-form">
+                    <input type="text" name="botcheck" style="display:none" autocomplete="off" />
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+<label class="form-label">Full Name</label>
+<input type="text" name="name" class="form-control" placeholder="Enter your name" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label class="form-label">Email</label>
+<input type="email" name="email" class="form-control" placeholder="Enter email" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label class="form-label">Phone</label>
+<input type="tel" name="phone" class="form-control" placeholder="Phone number" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label class="form-label">Guests</label>
+<select name="guests" class="form-control">
+<option>1 Person</option>
+<option>2 People</option>
+<option>3 People</option>
+<option>4 People</option>
+<option>5+ People</option>
+</select>
+</div>
+
+<div class="col-md-6 mb-3">
+<label class="form-label">Date</label>
+<input type="date" name="date" class="form-control" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label class="form-label">Time</label>
+<input type="time" name="time" class="form-control" required>
+</div>
+
+<div class="col-12 mb-3">
+<label class="form-label">Special Request</label>
+<textarea name="message" rows="3" class="form-control" placeholder="Any special request"></textarea>
+</div>
+
+<div class="col-12 text-center">
+<button type="submit" class="reserve-btn">
+Reserve Table
+</button>
+</div>
+
+</div>
+
+</form>
+
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <div class="container">
+        <div class="row g-4">
+            <!-- About Section -->
+            <div class="col-lg-4">
+                <h5 class="footer-brand">
+                    <i class="fas fa-utensils me-2"></i>Gourmet Restaurant
+                </h5>
+                <p class="mt-3">Experience culinary excellence with our handcrafted dishes made from the finest ingredients, served in an elegant atmosphere.</p>
+                
+                <!-- Social Media Links (Demo) -->
+                <div class="social-links mt-4">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://tripadvisor.com" target="_blank" rel="noopener noreferrer" title="TripAdvisor">
+                        <i class="fab fa-tripadvisor"></i>.
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="col-lg-2">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#home"><i class="fas fa-chevron-right me-2"></i>Home</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right me-2"></i>About Us</a></li>
+                    <li><a href="#menu"><i class="fas fa-chevron-right me-2"></i>Our Menu</a></li>
+                    <li><a href="#specials"><i class="fas fa-chevron-right me-2"></i>Specials</a></li>
+                    <li><a href="#reservation"><i class="fas fa-chevron-right me-2"></i>Reservation</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Info - HYDERABAD ADDRESS -->
+            <div class="col-lg-3">
+                <h5>Contact Info</h5>
+                <ul class="list-unstyled contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span><strong>Main Branch:</strong> Shop 5-7, Sindhi Muslim Cooperative Housing Society, Qasimabad, Hyderabad, Sindh 71000</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span><strong>City Branch:</strong> 42 Auto Bhan Road, Near Hyderabad Colony, Latifabad, Hyderabad, Sindh 72000</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span><strong>Main Branch:</strong> +92 (22) 1234-567</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span><strong>City Branch:</strong> +92 (22) 8765-432</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-mobile-alt"></i>
+                        <span><strong>WhatsApp:</strong> +92 333 1234567</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>info@gourmethyd.pk</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Sun: 12:00 PM - 12:00 AM</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Newsletter & Payment -->
+            <div class="col-lg-3">
+                <h5>Newsletter</h5>
+                <p>Subscribe for exclusive offers and updates</p>
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Payment Methods -->
+                <div class="mt-4">
+                    <p class="mb-2"><i class="fas fa-credit-card me-2"></i> We Accept:</p>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa" title="Visa"></i>
+                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                        <i class="fas fa-money-bill-wave" title="Cash"></i>
+                        <i class="fas fa-mobile-alt" title="JazzCash/EasyPaisa"></i>
+                        <i class="fas fa-credit-card" title="Local Debit Cards"></i>
+                    </div>
+                    <p class="mt-2 small"><i class="fas fa-check-circle text-success"></i> JazzCash, EasyPaisa & Local Cards Accepted</p>
+                </div>
+                
+                <!-- Local Languages -->
+                <div class="mt-3">
+                    <p class="mb-1"><i class="fas fa-language me-2"></i> بول چال:</p>
+                    <div>
+                        <span class="badge bg-secondary me-1">English</span>
+                        <span class="badge bg-secondary me-1">اردو</span>
+                        <span class="badge bg-secondary me-1">سنڌي</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2024 Gourmet Restaurant Hyderabad. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> in Hyderabad, Sindh</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+<!-- Toast notification for newsletter -->
+<div class="toast-notification" id="newsletterToast">
+    <div class="toast-content">
+        <i class="fas fa-check-circle toast-icon"></i>
+        <div class="toast-message"></div>
+    </div>
+</div>
+
+
+<!-- EmailJS SDK (KEEP THIS ONE) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+
+<!-- Bootstrap JS (KEEP THIS ONE) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ========== EMAILJS INITIALIZATION ==========
+(function() {
+    // Initialize with your public key
+    emailjs.init("LLRE4fEwU3GQ4KyER");
+    console.log("EmailJS initialized successfully");
+})();
+
+// ========== RESERVATION FORM HANDLER ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const reservationForm = document.getElementById("reservation-form");
+    
+    if (reservationForm) {
+        reservationForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            // Show sending status
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
+            
+            const formData = new FormData(this);
+            const name = String(formData.get("name") || "").trim();
+            const email = String(formData.get("email") || "").trim();
+            const phone = String(formData.get("phone") || "").trim();
+            const guests = String(formData.get("guests") || "").trim();
+            const date = String(formData.get("date") || "").trim();
+            const time = String(formData.get("time") || "").trim();
+            const message = String(formData.get("message") || "").trim() || "No special request";
+
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                from_phone: phone,
+                name: name,
+                email: email,
+                phone: phone,
+                guests: guests,
+                guest_count: guests,
+                number_of_guests: guests,
+                date: date,
+                reservation_date: date,
+                time: time,
+                reservation_time: time,
+                message: message,
+                special_request: message,
+                special_requests: message,
+                to_name: "Gourmet Restaurant",
+                restaurant: "Gourmet Restaurant"
+            };
+
+            console.info("Reservation fields captured:", {
+                guests: Boolean(guests),
+                date: Boolean(date),
+                time: Boolean(time),
+                message: Boolean(message)
+            });
+            
+            // Send the email
+            emailjs.send(
+                "service_mvzpyde",     // Your service ID
+                "template_hlwo5cv",    // Reservation template ID
+                templateParams
+            )
+           .then(function(response) {
+                console.log("SUCCESS!", response);
+                // Use toast notification instead of alert
+                showToast("Table reserved successfully! We'll contact you soon.");
+                reservationForm.reset();
+            })
+            .catch(function(error) {
+                console.error("FAILED!", error);
+                // Use toast notification for error too
+                showToast("❌ Failed to send reservation. Please try again.");
+            })
+            .finally(function() {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+<!-- COMPLETE WORKING JAVASCRIPT -->
+<script>
+// ========== TOAST NOTIFICATION FUNCTION ==========
+function showToast(message, duration = 3000) {
+    const toast = document.getElementById('newsletterToast');
+    if (!toast) return;
+    
+    const toastMessage = toast.querySelector('.toast-message');
+    toastMessage.textContent = message;
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, duration);
+}
+
+// ========== EMAIL VALIDATION ==========
+function isValidEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// ========== CART FUNCTIONALITY ==========
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function updateCartCount() {
+    const cartCount = document.getElementById('cartCount');
+    if (cartCount) {
+        cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+    }
+}
+
+function addToCart(name, price, image) {
+    let existing = cart.find(i => i.name === name);
+    if (existing) { 
+        existing.quantity += 1; 
+    } else { 
+        cart.push({ name, price: parseFloat(price), image, quantity: 1 }); 
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    alert(name + " added to cart!");
+}
+
+function orderNow(name, price, image) {
+    localStorage.setItem("cart", JSON.stringify([{ name, price: parseFloat(price), image, quantity: 1 }]));
+    window.location.href = "checkout.html";
+}
+
+// ========== ADD TO CART BUTTONS ==========
+document.querySelectorAll(".add-to-cart").forEach(btn => {
+    btn.addEventListener("click", function() {
+        addToCart(
+            this.getAttribute("data-item"), 
+            this.getAttribute("data-price"), 
+            this.getAttribute("data-image")
+        );
+    });
+});
+
+// ========== ORDER NOW BUTTONS - FIXED (ALL ORDER NOW BUTTONS) ==========
+document.querySelectorAll(".order-now").forEach(btn => {
+    btn.addEventListener("click", function() {
+        orderNow(
+            this.getAttribute("data-item"), 
+            this.getAttribute("data-price"), 
+            this.getAttribute("data-image")
+        );
+    });
+});
+
+
+// ========== UPDATE CART COUNT ON PAGE LOAD ==========
+updateCartCount();
+
+// ========== HEADER SCROLL EFFECT ==========
+window.addEventListener('scroll', function() {
+    const header = document.getElementById('header');
+    if (header) {
+        header.style.boxShadow = window.scrollY > 50 ? '0 4px 15px rgba(0,0,0,0.1)' : 'none';
+    }
+});
+
+// ========== NEWSLETTER SUBSCRIPTION ==========
+document.querySelectorAll('footer form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const emailInput = this.querySelector('input[type="email"]');
+        if (!emailInput) return;
+        
+        const email = emailInput.value.trim();
+        
+        if (email && isValidEmail(email)) {
+            showToast(`Thanks! You're subscribed with ${email}`);
+            emailInput.value = '';
+            
+            let subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers')) || [];
+            if (!subscribers.includes(email)) {
+                subscribers.push(email);
+                localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
+            }
+        } else {
+            showToast(' Please enter a valid email address');
+        }
+    });
+});
+
+// ========== HERO SECTION ANIMATION ==========
+const animateElems = document.querySelectorAll('.animate-left');
+
+function checkScroll() {
+    const triggerBottom = window.innerHeight * 0.9;
+    animateElems.forEach(elem => {
+        if (elem.getBoundingClientRect().top < triggerBottom) {
+            elem.style.animationPlayState = 'running';
+        }
+    });
+}
+
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('load', checkScroll);
+
+// ========== HERO PLATE SCROLL ANIMATION ==========
+(function() {
+    const heroSection = document.querySelector('.hero-section');
+    const dishCircle = document.querySelector('.dish-circle');
+    const heroRight = document.querySelector('.hero-right');
+    
+    if (dishCircle) {
+        dishCircle.classList.add('plate-load');
+        setTimeout(() => dishCircle.classList.remove('plate-load'), 2000);
+    }
+    
+    function rotatePlateOnScroll() {
+        if (!dishCircle || !heroSection) return;
+        
+        const scrollY = window.scrollY;
+        const heroTop = heroSection.offsetTop;
+        const heroHeight = heroSection.offsetHeight;
+        const scrollProgress = Math.min(1, Math.max(0, (scrollY - heroTop) / heroHeight));
+        const rotation = scrollProgress * 360;
+        const scale = 1 - (scrollProgress * 0.1);
+        
+        dishCircle.style.transform = `rotate(${rotation}deg) scale(${scale})`;
+        
+        const motionCircles = document.querySelector('.motion-circles');
+        if (motionCircles) {
+            motionCircles.style.transform = `translate(-50%, -50%) rotate(${rotation * 0.5}deg)`;
+        }
+        
+        if (scrollProgress > 0.01 && scrollProgress < 0.99) {
+            heroSection.classList.add('scrolling');
+        } else {
+            heroSection.classList.remove('scrolling');
+        }
+    }
+    
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            if (!inThrottle) {
+                func.apply(this, arguments);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+    
+    window.addEventListener('scroll', throttle(rotatePlateOnScroll, 10));
+    rotatePlateOnScroll();
+    
+    if (heroRight) {
+        heroRight.addEventListener('mousemove', function(e) {
+            if (window.scrollY > 50) return;
+            
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) * 0.05;
+            const rotateY = (centerX - x) * 0.05;
+            
+            dishCircle.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        });
+        
+        heroRight.addEventListener('mouseleave', function() {
+            if (window.scrollY > 50) return;
+            rotatePlateOnScroll();
+        });
+    }
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- AOS Animation Script -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    // Initialize AOS animations
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+        easing: 'ease-in-out'
+    });
+</script>
+
+
+
+
+
+
+<script>
+  // ========== HERO DISH ANIMATION - LOAD + SCROLL ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const dishCircle = document.querySelector('.dish-circle');
+    const heroSection = document.querySelector('.hero-section');
+    
+    if (dishCircle) {
+        // 1. Page load par animation chalayein
+        dishCircle.classList.add('load-animation');
+        
+        // 2. Animation khatam hone par class hata dein (2 second baad)
+        setTimeout(() => {
+            dishCircle.classList.remove('load-animation');
+        }, 2000); // 2 seconds animation
+        
+        // 3. Scroll animation variables
+        let lastScrollY = window.scrollY;
+        let currentRotation = 0;
+        let targetRotation = 0;
+        let isScrolling = false;
+        let scrollTimeout;
+        
+        // 4. Scroll event listener
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            const scrollDelta = scrollY - lastScrollY;
+            
+            // Scroll direction ke according rotation
+            targetRotation += scrollDelta * 0.3; // 0.3 = sensitivity
+            
+            // Rotation ko 0-360 ke beech mein rakhein
+            targetRotation = targetRotation % 360;
+            
+            // Smooth transition ke liye
+            dishCircle.style.transition = 'transform 0.2s ease-out';
+            dishCircle.style.transform = `rotate(${targetRotation}deg)`;
+            
+            lastScrollY = scrollY;
+            
+            // Scrolling effect for motion circles
+            const motionCircles = document.querySelector('.motion-circles');
+            if (motionCircles) {
+                motionCircles.style.transition = 'transform 0.2s ease-out';
+                motionCircles.style.transform = `translate(-50%, -50%) rotate(${targetRotation * 0.3}deg)`;
+            }
+            
+            // Scrolling class add karein
+            if (!isScrolling) {
+                isScrolling = true;
+                heroSection.classList.add('scrolling');
+            }
+            
+            // Clear previous timeout
+            clearTimeout(scrollTimeout);
+            
+            // Scroll rukne par class hata dein
+            scrollTimeout = setTimeout(function() {
+                isScrolling = false;
+                heroSection.classList.remove('scrolling');
+                
+                // Thoda smooth stop
+                dishCircle.style.transition = 'transform 0.5s ease-out';
+                motionCircles.style.transition = 'transform 0.5s ease-out';
+            }, 150);
+        });
+        
+        // 5. Mouse move effect (optional)
+        const heroRight = document.querySelector('.hero-right');
+        if (heroRight) {
+            heroRight.addEventListener('mousemove', function(e) {
+                if (window.scrollY > 100) return; // Sirf top par hi hover effect
+                
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Thoda sa 3D effect
+                const rotateX = (y - centerY) * 0.03;
+                const rotateY = (centerX - x) * 0.03;
+                
+                dishCircle.style.transition = 'transform 0.1s ease';
+                dishCircle.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotate(${targetRotation}deg)`;
+            });
+            
+            heroRight.addEventListener('mouseleave', function() {
+                dishCircle.style.transition = 'transform 0.5s ease';
+                dishCircle.style.transform = `rotate(${targetRotation}deg)`;
+            });
+        }
+    }
+});
+
+// ========== SMOOTH SCROLLING WITH ROTATION RESET ==========
+// Jab user manually top par scroll kare to rotation reset karein
+window.addEventListener('scroll', function() {
+    const dishCircle = document.querySelector('.dish-circle');
+    if (!dishCircle) return;
+    
+    // Agar user top par hai to rotation 0 par laayein
+    if (window.scrollY < 50) {
+        dishCircle.style.transition = 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        dishCircle.style.transform = 'rotate(0deg)';
+        
+        const motionCircles = document.querySelector('.motion-circles');
+        if (motionCircles) {
+            motionCircles.style.transition = 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            motionCircles.style.transform = 'translate(-50%, -50%) rotate(0deg)';
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
+// ========== HERO DISH ANIMATION - ENTRANCE + SCROLL CIRCULAR MOTION ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const dishCircle = document.getElementById('rotatingDish');
+    const heroSection = document.getElementById('hero');
+    
+    if (!dishCircle) return;
+    
+    // 1. ENTRANCE ANIMATION - runs once when page loads
+    dishCircle.classList.add('entrance-spin');
+    
+    // Remove entrance class after animation completes (so scroll can take over)
+    setTimeout(() => {
+        dishCircle.classList.remove('entrance-spin');
+    }, 2000); // 2 seconds matches animation duration
+    
+    // 2. SCROLL CIRCULAR MOTION
+    let lastScrollY = window.scrollY;
+    let currentRotation = 0;
+    let targetRotation = 0;
+    let rotationFactor = 0.4; // How much rotation per scroll pixel (adjust as needed)
+    let isScrolling = false;
+    let scrollTimeout;
+    
+    // Scroll event listener
+    window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const scrollDelta = scrollY - lastScrollY;
+        
+        // Update target rotation based on scroll direction and distance
+        targetRotation += scrollDelta * rotationFactor;
+        
+        // Keep rotation within 0-360 for cleaner values (optional)
+        targetRotation = targetRotation % 360;
+        
+        // Apply rotation with smooth transition
+        dishCircle.style.transition = 'transform 0.15s cubic-bezier(0.2, 0, 0.2, 1)';
+        dishCircle.style.transform = `rotate(${targetRotation}deg)`;
+        
+        // Also rotate the motion circles slightly for extra effect
+        const motionCircles = document.querySelector('.motion-circles');
+        if (motionCircles) {
+            motionCircles.style.transition = 'transform 0.15s ease-out';
+            motionCircles.style.transform = `translate(-50%, -50%) rotate(${targetRotation * 0.2}deg)`;
+        }
+        
+        lastScrollY = scrollY;
+        
+        // Add scrolling class for any additional effects
+        if (!isScrolling) {
+            isScrolling = true;
+            heroSection.classList.add('scrolling');
+        }
+        
+        // Clear previous timeout
+        clearTimeout(scrollTimeout);
+        
+        // When scrolling stops, smoothly settle
+        scrollTimeout = setTimeout(function() {
+            isScrolling = false;
+            heroSection.classList.remove('scrolling');
+            
+            // Optional: smooth stop
+            dishCircle.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+        }, 150);
+    });
+    
+    // 3. OPTIONAL: Reset rotation when at top of page
+    window.addEventListener('scroll', function() {
+        // If user scrolls back to very top, smoothly return to 0
+        if (window.scrollY < 50 && targetRotation !== 0) {
+            targetRotation = 0;
+            dishCircle.style.transition = 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            dishCircle.style.transform = 'rotate(0deg)';
+            
+            const motionCircles = document.querySelector('.motion-circles');
+            if (motionCircles) {
+                motionCircles.style.transition = 'transform 0.8s ease-out';
+                motionCircles.style.transform = 'translate(-50%, -50%) rotate(0deg)';
+            }
+        }
+    });
+    
+    // 4. MOUSE MOVE EFFECT (subtle 3D tilt - optional)
+    const heroRight = document.querySelector('.hero-right');
+    if (heroRight) {
+        heroRight.addEventListener('mousemove', function(e) {
+            // Only apply tilt when not scrolling rapidly
+            if (window.scrollY > 200) return;
+            
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Subtle tilt
+            const rotateX = (y - centerY) * 0.03;
+            const rotateY = (centerX - x) * 0.03;
+            
+            dishCircle.style.transition = 'transform 0.1s ease';
+            dishCircle.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotate(${targetRotation}deg)`;
+        });
+        
+        heroRight.addEventListener('mouseleave', function() {
+            dishCircle.style.transition = 'transform 0.5s ease';
+            dishCircle.style.transform = `rotate(${targetRotation}deg)`;
+        });
+    }
+});
+
+// ========== ONLY ONE CLEAN ANIMATION - NO JERK ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const dishCircle = document.getElementById('rotatingDish');
+    if (!dishCircle) return;
+    
+    // ENTRANCE ANIMATION - sirf ek baar
+    dishCircle.classList.add('entrance-spin');
+    setTimeout(() => dishCircle.classList.remove('entrance-spin'), 1800);
+    
+    // SCROLL ANIMATION - smooth as butter
+    let rotation = 0;
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    let targetRotation = 0;
+    
+    window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const delta = scrollY - lastScrollY;
+        
+        // Slow, smooth rotation (0.15 = very gentle)
+        targetRotation += delta * 0.15;
+        
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                // Cubic bezier for buttery smooth motion
+                dishCircle.style.transition = 'transform 0.4s cubic-bezier(0.1, 0.8, 0.2, 1)';
+                dishCircle.style.transform = `rotate(${targetRotation}deg)`;
+                
+                // Motion circles bhi thoda rotate
+                const circles = document.querySelector('.motion-circles');
+                if (circles) {
+                    circles.style.transform = `translate(-50%, -50%) rotate(${targetRotation * 0.15}deg)`;
+                }
+                
+                ticking = false;
+            });
+            
+            ticking = true;
+        }
+        
+        lastScrollY = scrollY;
+    });
+    
+    // RESET AT TOP - smooth
+    window.addEventListener('scroll', function() {
+        if (window.scrollY < 20 && targetRotation !== 0) {
+            targetRotation = 0;
+            dishCircle.style.transition = 'transform 1s cubic-bezier(0.2, 0.9, 0.3, 1)';
+            dishCircle.style.transform = 'rotate(0deg)';
+        }
+    });
+});
+</script>
+
+</body>
+
+
+
+
+
+    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
